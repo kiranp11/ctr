@@ -1,0 +1,20 @@
+profiles:
+  dev:
+    train_set_path: ../../data/original/train_s.csv
+    # validation_set_path: ../../data/original/validation_1day.csv
+    validation_set_path: ../../data/original/train_s.csv
+    log_file_path: ../../dev_history.log
+    cache_location: ../../data/original/dev_cache/
+
+  prod:
+    train_set_path: ../data/original/train.csv
+    test_set_path: ../data/original/test.csv
+    prediction_file_path_prefix: ../data/original/submissions/predictions_
+    log_file_path: ../prod_history.log
+    cache_location: ../data/original/prod_cache/
+
+cache:
+  cache_encoder: True
+
+profile: dev
+model: SGDC_default

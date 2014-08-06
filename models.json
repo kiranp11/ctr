@@ -1,0 +1,9 @@
+{
+    "SGDC_default": {
+        "ignore_features": ["C1", "C2"],
+        "params": {
+            "loss": "log",
+            "n_jobs": 2
+        }
+    }
+}

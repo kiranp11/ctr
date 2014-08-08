@@ -27,7 +27,7 @@ def get_converters(load_cols):
     :param load_cols:
     """
     hex_to_int = lambda x: int(x, 16) if len(x) > 0 else 0
-    str_to_int = lambda x: int(x) if len(x) > 0 else -10
+    str_to_int = lambda x: int(x) if len(x) > 0 else -100
     converters = dict()
     for c in load_cols:
         if c[0] == 'C':

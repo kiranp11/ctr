@@ -18,7 +18,7 @@ class Preprocessor:
         Loads OneHotEncoder object if present in cache provided 'cache_encoder' is True in settings.
         If any of the above condition is false, it creates a new encoder object, trains it and caches it.
         """
-        encoder_cache_file_name = "encoder_small.cache"
+        encoder_cache_file_name = "encoder.cache"
         if self.settings['cache']['cache_encoder']:
             self.enc = self.io_utils.load_from_cache(encoder_cache_file_name)
         if self.enc is None:

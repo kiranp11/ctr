@@ -1,9 +1,9 @@
 profiles:
   dev:
-    train_set_path: ../../data/original/train_s.csv
-    # validation_set_path: ../../data/original/validation_1day.csv
-    validation_set_path: ../../data/original/train_s.csv
-    log_file_path: ../../dev_history.log
+    train_set_path: ../../data/original/train_6days.csv
+    validation_set_path: ../../data/original/validation_1day.csv
+    # validation_set_path: ../../data/original/train_s.csv
+    log_file_path: ../dev_history.log
     cache_location: ../../data/original/dev_cache/
 
   prod:

@@ -29,33 +29,47 @@ class Classifier:
         logging.info("Log loss score for model '%s' is '%f'" % (model_name, log_loss_score))
 
     def train(self, model, ignore_features):
+        logging.debug("Loading train set...")
         _use_cols = misc_utils.get_cols_to_load(labels=True, load_int_cols=True, load_cat_cols=True,
                                                 ignore_features=ignore_features)
-        train_chunks = self.io_utils.load_train_set(use_cols=_use_cols, converters=misc_utils.get_converters(_use_cols),
+        train_df = self.io_utils.load_train_set(use_cols=_use_cols, converters=misc_utils.get_converters(_use_cols),
                                                     chunk_size=self.settings['chunk_size'])
 
         start = datetime.now()
         logging.debug("Training Model...")
-        for i, chunk in enumerate(train_chunks):
-            logging.debug("Processing chunk %d\t%s" % (i + 1, str(datetime.now() - start)))
-            self.__process_train_chunk(chunk, model, ignore_features)
+        
+        if self.settings['chunk_size'] is not None:
+            for i, chunk in enumerate(train_df):
+                logging.debug("Processing chunk %d\t%s" % (i + 1, str(datetime.now() - start)))
+                self.__process_train_chunk(chunk, model, ignore_features)
+        else:
+            self.__process_train_chunk(train_df, model, ignore_features)
+        
         logging.debug("Finished training in \t%s" % str(datetime.now() - start))
 
     def predict(self, model, ignore_features):
+        logging.debug("Loading test set...")
         _use_cols = misc_utils.get_cols_to_load(labels=True, load_int_cols=True, load_cat_cols=True,
                                                 ignore_features=ignore_features)
-        test_chunks = self.io_utils.load_validation_set(use_cols=_use_cols,
+        test_df = self.io_utils.load_validation_set(use_cols=_use_cols,
                                                         converters=misc_utils.get_converters(_use_cols),
                                                         chunk_size=self.settings['chunk_size'])
         start = datetime.now()
         logging.debug("Predicting probabilities...")
         actual_labels = []
         predicted_labels = []
-        for i, chunk in enumerate(test_chunks):
-            logging.debug("Processing chunk %d\t%s" % (i + 1, str(datetime.now() - start)))
-            y, predictions = self.__process_test_chunk(chunk, model, ignore_features)
+        
+        if self.settings['chunk_size'] is not None:
+            for i, chunk in enumerate(test_df):
+                logging.debug("Processing chunk %d\t%s" % (i + 1, str(datetime.now() - start)))
+                y, predictions = self.__process_test_chunk(chunk, model, ignore_features)
+                actual_labels += y.tolist()
+                predicted_labels += self.__cap_predictions(predictions)
+        else:
+            y, predictions = self.__process_test_chunk(test_df, model, ignore_features)
             actual_labels += y.tolist()
             predicted_labels += self.__cap_predictions(predictions)
+
         logging.debug("Finished predicting in \t%s" % str(datetime.now() - start))
         return self.evaluate_model(actual_labels, predicted_labels)
 
@@ -104,9 +118,8 @@ class Classifier:
         return_val = []
         for p in preds:
             prob = p[1]
-            if prob > 0.98:
-                prob = 0.98
-            elif prob < 0.02:
-                prob = 0.02
+            if prob > 0.98: prob = 0.98
+            elif prob < 0.02: prob = 0.02
             return_val.append(prob)
         return return_val
+

@@ -32,7 +32,7 @@ class Classifier:
         _use_cols = misc_utils.get_cols_to_load(labels=True, load_int_cols=True, load_cat_cols=True,
                                                 ignore_features=ignore_features)
         train_chunks = self.io_utils.load_train_set(use_cols=_use_cols, converters=misc_utils.get_converters(_use_cols),
-                                                    chunk_size=1500000)
+                                                    chunk_size=self.settings['chunk_size'])
 
         start = datetime.now()
         logging.debug("Training Model...")
@@ -46,7 +46,7 @@ class Classifier:
                                                 ignore_features=ignore_features)
         test_chunks = self.io_utils.load_validation_set(use_cols=_use_cols,
                                                         converters=misc_utils.get_converters(_use_cols),
-                                                        chunk_size=1500000)
+                                                        chunk_size=self.settings['chunk_size'])
         start = datetime.now()
         logging.debug("Predicting probabilities...")
         actual_labels = []

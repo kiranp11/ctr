@@ -18,3 +18,4 @@ cache:
 
 profile: dev
 model: SGDC_default
+chunk_size: 1500000

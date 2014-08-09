@@ -1,3 +1,5 @@
 [08/08/14 07:24:15] INFO	Log loss score for model 'BNB_default' is '0.568948'
 [08/08/14 07:31:17] INFO	Log loss score for model 'MNB_default' is '0.572550'
-[08/08/14 07:38:19] INFO	Log loss score for model 'SGDC_same_NA_features' is '1.687846'[08/08/14 15:37:50] INFO	Log loss score for model 'SGDC_default' is '1.083953'
+[08/08/14 07:38:19] INFO	Log loss score for model 'SGDC_same_NA_features' is '1.687846'
+[08/08/14 15:37:50] INFO	Log loss score for model 'SGDC_default' is '1.083953'
+[08/08/14 23:03:09] INFO	Log loss score for model 'SGDC_default' is '1.036117' (with one day train and one day test)

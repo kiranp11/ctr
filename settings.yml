@@ -17,5 +17,5 @@ cache:
   cache_encoder: True
 
 profile: dev
-model: SGDC_default
+model: SGDC_int_features_with_elastic_net
 chunk_size: 1500000

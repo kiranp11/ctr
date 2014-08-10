@@ -4,3 +4,10 @@
 [08/08/14 15:37:50] INFO	Log loss score for model 'SGDC_default' is '1.083953'
 [08/08/14 23:03:09] INFO	Log loss score for model 'SGDC_default' is '1.036117' (with one day train and one day test)
 [08/09/14 20:47:06] INFO	Log loss score for model 'SGDC_default' is '0.497999' (with one day train and one day test, scaled int features)
+[08/10/14 13:16:05] INFO	Log loss score for model 'SGDC_same_NA_features' is '0.565843'
+[08/10/14 13:18:53] INFO	Log loss score for model 'SGDC_int_features' is '0.564012'
+[08/10/14 13:23:50] INFO	Log loss score for model 'SGDC_int_features' is '0.656521' (with fit_penalty = false)
+[08/10/14 13:26:33] INFO	Log loss score for model 'SGDC_int_features_with_elastic_net' is '0.563671'
+[08/10/14 13:31:36] INFO	Log loss score for model 'SGDC_int_features_with_elastic_net' is '0.562727' (with "l1_ratio": 0.50)
+[08/10/14 19:54:36] INFO	Log loss score for model 'SGDC_int_features_with_elastic_net' is '0.562535' (with binarized I12)
+[08/10/14 19:57:14] INFO	Log loss score for model 'SGDC_int_features_with_elastic_net' is '0.561714' (with binarized I12 and "l1_ratio": 0.50)

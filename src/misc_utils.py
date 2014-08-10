@@ -67,7 +67,8 @@ def get_mean_normalizer_with_imputer(column_name):
         "I9": lambda x: (float(x) - 106.1) / 29019 if len(x) > 0 else 0,
         "I10": lambda x: (float(x) - 1) / 11 if len(x) > 0 else 0,
         "I11": lambda x: (float(x) - 2.7) / 231 if len(x) > 0 else 0,
-        "I12": lambda x: (float(x) - 1) / 4008 if len(x) > 0 else 0,
+        # "I12": lambda x: (float(x) - 1) / 4008 if len(x) > 0 else 0,
+        "I12": lambda x: -1 if len(x) == 0 else 0 if float(x) == 0.0 else 1,
         "I13": lambda x: (float(x) - 8) / 7393 if len(x) > 0 else 0
     }
     return converter_funcs[column_name]

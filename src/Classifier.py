@@ -5,7 +5,7 @@ import scipy as sp
 from IOUtility import IOUtility
 from Preprocessor import Preprocessor
 from scipy import sparse
-from sklearn import linear_model, naive_bayes
+from sklearn import linear_model, naive_bayes, ensemble
 from datetime import datetime
 
 
@@ -20,7 +20,11 @@ class Classifier:
         self.models = {
                 "SGDC": linear_model.SGDClassifier,
                 "BNB": naive_bayes.BernoulliNB,
-                "MNB": naive_bayes.MultinomialNB}
+                "MNB": naive_bayes.MultinomialNB,
+                "RF": ensemble.RandomForestClassifier,
+                "ET": ensemble.ExtraTreesClassifier,
+                "ADA": ensemble.AdaBoostClassifier,
+                "GB": ensemble.GradientBoostingClassifier}
 
     def run(self):
         model, model_name, model_settings = self.__load_model()

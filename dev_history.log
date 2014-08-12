@@ -11,3 +11,11 @@
 [08/10/14 13:31:36] INFO	Log loss score for model 'SGDC_int_features_with_elastic_net' is '0.562727' (with "l1_ratio": 0.50)
 [08/10/14 19:54:36] INFO	Log loss score for model 'SGDC_int_features_with_elastic_net' is '0.562535' (with binarized I12)
 [08/10/14 19:57:14] INFO	Log loss score for model 'SGDC_int_features_with_elastic_net' is '0.561714' (with binarized I12 and "l1_ratio": 0.50)
+[08/12/14 06:36:53] INFO	Log loss score for model 'RF_int_features' is '0.584788'
+Feature importances: [ 0.03370371  0.12392075  0.08630183  0.04541538  0.18910237  0.12799795	0.08406989  0.07917085  0.1205428   0.0117901   0.03462272  0.01595157	0.0474101 ]
+[08/12/14 06:45:42] INFO	Log loss score for model 'ET_int_features' is '0.595160'
+Feature importances: [ 0.03324679  0.13231146  0.10327104  0.04956362  0.1743662   0.11130468	0.07990083  0.07701469  0.11366493  0.01199698  0.05352315  0.00451292	0.05532271]
+[08/12/14 07:10:49] INFO	Log loss score for model 'ADA_int_features' is '0.685217'
+Feature importances: [ 0.04  0.06  0.08  0.06  0.02  0.28  0.04  0.04  0.02  0.02  0.2   0.06 	0.08]
+[08/12/14 07:37:25] INFO	Log loss score for model 'GB_int_features' is '0.514694'
+Feature importances: [ 0.0222503   0.06247724  0.13398218  0.06359647  0.04920381  0.22101392 0.05365596  0.06555064  0.08386803  0.01645013  0.07381378  0.04994453 0.10419302]
